@@ -66,7 +66,7 @@ O Gerenciamento de Igrejas, previamente denominado como Churchly, é uma aplica�
         * [🟡] Exclusão
         
  * Configurações
-    * [🟤] Senha padrão ao cadastrar novo membro que seja usuário do sistema.
+    * [🟤] Senha padrão ao cadastrar novo membro que seja usuário do sistema (atualmente é 12345678).
 
 
 
