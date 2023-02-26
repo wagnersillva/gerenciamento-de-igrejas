@@ -1,0 +1,43 @@
+/*.ant-spin-blur::after {*/
+/*  opacity: 0.6 !important;*/
+/*  background: black !important;*/
+/*}*/
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active,
+.ant-input-affix-wrapper>input.ant-input:focus {
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+
+.btn-primary-success {
+  background-color: var(--color-primary-success) !important;
+  border-color: var(--color-primary-success) !important;
+  height: 45px !important;
+}
+
+.btn-primary-success:active,
+.btn-primary-success:focus,
+.btn-primary-success:hover {
+  background-color: var(--color-primary-success-hover) !important;
+  border-color: var(--color-primary-success-hover) !important;
+}
+.btn-secondary-cancel {
+  background-color: #C4DFD029 !important;
+  border-color: #C4DFD029 !important;
+  color: var(--color-primary-success) !important;
+  border-width: 2px;
+  height: 45px !important;
+}
+
+.btn-secondary-cancel:active,
+.btn-secondary-cancel:focus,
+.btn-secondary-cancel:hover {
+  background-color: #99D1AD4C !important;
+  border-color: #99D1AD4C !important;
+}
+
+.ant-transfer-list {
+  width: 270px !important;
+}

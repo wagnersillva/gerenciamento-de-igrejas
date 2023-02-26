@@ -1,0 +1,40 @@
+.spinner-private-route {
+    min-height: 100vh !important;
+}
+
+.spinner-suspense {
+    background-color: var(--color-gray-background-body) !important;
+    position: absolute !important;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.ant-spin-blur {
+    opacity: 0.3 !important;
+}
+
+.ant-spin-dot {
+    font-size: 50px !important;
+}
+
+.spinner-suspense .ant-spin {
+    max-height: none !important;
+}
+
+.spinner-suspense .ant-spin-dot {
+    font-size: 70px !important;
+    background-color: var(--color-gray-background-body) !important;
+}
+.spinner-private-route.ant-spin.ant-spin-spinning:not(.spinner-suspense) {
+    background-color: #dbd9d9eb !important;
+}
+
+.spinner-private-route .ant-spin-dot {
+    font-size: 100px !important;
+    background-color: transparent !important;
+}
+
+.ant-spin-dot {
+    color: var(--color-primary-hover) !important;
+}

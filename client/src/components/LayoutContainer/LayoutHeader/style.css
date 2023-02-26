@@ -1,0 +1,81 @@
+.layout-header {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.layout-header .header-actions {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.layout-header .header-icon-collapse {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+}
+
+.layout-header .header-icon-collapse .ant-btn {
+    border: none;
+}
+
+.layout-header .header-icon-collapse .ant-btn:focus,
+.layout-header .header-icon-collapse .ant-btn:hover {
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+    background: #fff;
+}
+
+.user-account,
+.church-choose {
+    display: flex;
+    align-items: center;
+    padding-inline: 20px;
+    color: #58112b !important;
+}
+
+.church-choose {
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.user-account-dropdown,
+.church-choose-dropdown {
+    display: flex;
+    line-height: 25px;
+    padding-block: 8px;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.church-choose-dropdown {
+    border-bottom: solid 1px #e1e1e1;
+    padding-inline: 5px;
+}
+
+.church-choose-title {
+    line-height: 15px;
+    padding-inline: 5px;
+}
+
+.church-choose .ant-dropdown-trigger {
+    line-height: 0;
+}
+
+.user-account-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;;
+}
+
+.user-account-name, .church-choose-title {
+    font-weight: 500 !important;
+}
+
+.user-account-email {
+    font-weight: 400 !important;
+}

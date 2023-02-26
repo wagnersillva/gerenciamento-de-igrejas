@@ -1,0 +1,116 @@
+.ant-layout-sider {
+    flex: 0 0 215px !important;
+    max-width: 215px !important;
+    min-width: 200px !important;
+    width: 215px !important;
+}
+
+
+#components-layout-demo-top-side-2 .logo-title {
+    float: left;
+    width: 120px;
+    height: 31px;
+    margin: 16px 24px 16px 0;
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.ant-row-rtl #components-layout-demo-top-side-2 .logo-title {
+    float: right;
+    margin: 16px 0 16px 24px;
+}
+
+.site-layout {
+    max-height: 100vh;
+    overflow-y: auto;
+}
+
+.site-layout-background, .ant-layout-header {
+    background: #fff !important;
+}
+
+.ant-layout-header, .logo-title {
+    height: 70px !important;
+}
+
+.ant-layout-content {
+    min-height: auto !important;
+    position: relative !important;
+}
+
+.logo-title {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    background: #4a0e24;
+    gap: 10px;
+    padding-left: 20px;
+}
+
+.logo-title .logo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    background: #c5acb5;
+    border-radius: 8px;
+}
+
+.logo-title .logo img{
+    width: 40px;
+}
+
+.logo-title .ant-space{
+    color: #fff;
+    font-size: 16px;
+}
+
+.ant-layout-sider-children,
+.ant-menu.ant-menu-dark,
+.ant-menu-dark .ant-menu-sub,
+.ant-menu.ant-menu-dark .ant-menu-sub {
+    background: var(--color-primary) !important;
+}
+
+.ant-menu-dark.ant-menu-dark:not(.ant-menu-horizontal) .ant-menu-item-selected {
+    background-color: var(--color-primary-hover) !important;
+}
+
+.ant-layout-sider.ant-layout-sider-collapsed {
+    flex: 0 0 85px !important;
+    max-width: 85px !important;
+    min-width: 85px !important;
+    width: 85px !important;
+}
+
+.logo-title.collapsed .ant-space {
+    display: none;
+}
+
+@media (max-width: 768px){
+    .ant-menu-submenu-title {
+        padding-left: 20px !important;
+    }
+
+    .ant-layout-sider-zero-width-trigger {
+        z-index: -10 !important;
+    }
+
+    .ant-layout-sider {
+        flex: 0 0 85px !important;
+        max-width: 85px !important;
+        min-width: 85px !important;
+        width: 85px !important;
+    }
+
+    .logo-title .ant-space,
+    .ant-layout-sider > .ant-menu-title-content,
+    .ant-layout-sider > .ant-menu-submenu-arrow{
+        display: none;
+    }
+    .ant-layout-sider .ant-menu-submenu-title {
+        padding: 0 !important;
+    }
+    .ant-layout-sider .ant-menu-submenu-title span.anticon {
+        margin-left: 32px !important;
+    }
+}
