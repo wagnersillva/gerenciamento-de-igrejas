@@ -5,7 +5,7 @@ O Gerenciamento de Igrejas, previamente denominado como Churchly, é uma aplica�
 ## Progresso
 
 ### Sumário de cores.
-    🟤 A fazer  - 🔵 Em desenvolvimento - 🟡 Pronto para testes - 🟠 Homologação - 🟢 Finalizado - 🔴 Bugs
+    🟤 A fazer  - 🔵 Em desenvolvimento - 🟡 Em teste - 🟢 Finalizado - 🔴 Bugs
     
 ### Módulos 
 
