@@ -2,6 +2,74 @@
 
 O Gerenciamento de Igrejas, previamente denominado como Churchly, é uma aplicação web que permite a igreja ter um controle sobre membros, financeiro, escola dominical.
 
+## Progresso
+
+### Sumário de cores.
+    🟤 A fazer  - 🔵 Em desenvolvimento - 🟡 Pronto para testes - 🟠 Homologação - 🟢 Finalizado - 🔴 Bugs
+    
+### Módulos 
+
+* Dasbaord
+    * [🟤] todas funcionalidades. 
+    
+* Secretaria
+    * Membros  
+        * [🟡] Criação 
+        * [🟡] Listagem
+        * [🟡] Edição
+        * [🟡] Exclusão
+        * [🟤] impressão carteirinha de membro
+        * [🟤] impressão carteira de Apresentação/recomendação.
+        * [🟤] impressão carteirinha de membro
+    * Cargos  
+        * [🟡] Criação 
+        * [🟡] Listagem
+        * [🟡] Edição
+        * [🟡] Exclusão
+    * Igrejas  
+        * [🟡] Criação 
+        * [🟡] Listagem
+        * [🟡] Edição
+        * [🟡] Exclusão
+        * [🟤] Escolha do pastor dirigente.
+
+* Escola Bíblica
+    * Turmas  
+        * [🟤] Criação 
+        * [🟤] Listagem
+        * [🟤] Edição
+        * [🟤] Exclusão
+        
+    * Aulas  
+        * [🟤] Marcar presença de alunos 
+        * [🟤] Salvar informações sobre a aula da turma.
+
+* Financeiro
+    * Dashboard  
+        * [🟤] todas funcionalidades. 
+    * Ganhos  
+        * [🟤] Criação 
+        * [🟤] Listagem
+        * [🟤] Edição
+        * [🟤] Exclusão   
+    * Gastos  
+        * [🟤] Criação 
+        * [🟤] Listagem
+        * [🟤] Edição
+        * [🟤] Exclusão 
+
+* Segurança
+    * Perfil do sistema  
+        * [🟡] Criação 
+        * [🟡] Listagem
+        * [🟡] Edição
+        * [🟡] Exclusão
+        
+ * Configurações
+    * [🟤] Senha padrão ao cadastrar novo membro que seja usuário do sistema.
+
+
+
 ## Tecnologias
 
 O Churchly foi criado com as seguintes tecnologias:
