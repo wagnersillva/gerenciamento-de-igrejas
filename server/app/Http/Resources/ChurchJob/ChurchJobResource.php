@@ -2,9 +2,10 @@
 
 namespace App\Http\Resources\ChurchJob;
 
+use App\Http\Resources\DefaultResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class ChurchJobResource extends JsonResource
+class ChurchJobResource extends DefaultResource
 {
     /**
      * Transform the resource into an array.
@@ -14,7 +15,21 @@ class ChurchJobResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        $model = parent::toArray($request);
+        $model["disabledDelete"] = $this->disabledDelete();
+        $model["disabledUpdate"] = $this->disabledUpdate();
+
+        return $model;
+    }
+
+    private function disabledUpdate()
+    {
+        return  !in_array('edit-church-job', $this->getPermissionsUserLogged());
+    }
+
+    private function disabledDelete()
+    {
+        return !in_array('delete-church-job', $this->getPermissionsUserLogged());
     }
 
 }

@@ -2,11 +2,12 @@
 
 namespace App\Http\Resources\User;
 
+use App\Http\Resources\DefaultResource;
 use App\Http\Resources\DocumentResource;
 use App\Models\User;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class UserResource extends JsonResource
+class UserResource extends DefaultResource
 {
     /**
      * Transform the resource into an array.
@@ -17,8 +18,8 @@ class UserResource extends JsonResource
     public function toArray($request)
     {
         $model = parent::toArray($request);
-//        $model["disabledDelete"] = $this->disabledDelete();
-//        $model["disabledUpdate"] = $this->disabledUpdate();
+        $model["disabledDelete"] = $this->disabledDelete();
+        $model["disabledUpdate"] = $this->disabledUpdate();
         $model["password_changed"] = $this->password_changed == 1;
         $model["is_general_admin"] = $this->is_general_admin == 1;
         $model['documents'] = DocumentResource::collection($this->documents);
@@ -27,21 +28,6 @@ class UserResource extends JsonResource
         $model['church'] = new ChurchResourceTemplate($this->church);
 
         return $model;
-    }
-
-    private function userLogged()
-    {
-        return User::find(auth()->user()->id);
-    }
-
-    private function isSameUser()
-    {
-        return $this->userLogged()->id == $this->id;
-    }
-
-    private function getPermissionsUserLogged()
-    {
-        return $this->userLogged()->getPermissionsLabels();
     }
 
     private function disabledUpdate()

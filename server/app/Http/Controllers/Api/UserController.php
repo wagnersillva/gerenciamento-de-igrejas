@@ -90,7 +90,6 @@ class UserController extends CrudController
      */
     public function update(Request $request, int $id): UserUpdateSuccessResource
     {
-        $this->authorize('edit-user');
         $this->canEditUser($id);
 
         $user = User::find($id);
