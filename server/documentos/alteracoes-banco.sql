@@ -67,3 +67,5 @@ alter table churches add column updated_at timestamp null;
 alter table churches modify address_id bigint unsigned null;
 
 alter table address modify user_id bigint unsigned; -- mudar associação entre endereco e usuario
+
+alter table users add church_logged bigint unsigned;
