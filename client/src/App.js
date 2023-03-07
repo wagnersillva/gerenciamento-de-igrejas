@@ -5,7 +5,7 @@ import {ConfigProvider, notification} from "antd";
 import locale from 'antd/es/locale/pt_BR'
 import './App.css';
 import {errorSagaClear} from "./store/modules/global/action";
-import LayoutContainer from "./components/LayoutContainer";
+import LayoutContainer from "./components/Layout";
 import LoadingDefault from "./components/LoadingDefault";
 
 function App() {

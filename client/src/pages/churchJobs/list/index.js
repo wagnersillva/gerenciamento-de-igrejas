@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import LayoutContent from "../../../components/LayoutContainer/LayoutContent";
+import LayoutContent from "../../../components/Layout/Content";
 import {listChurchJobRequest, destroyRequest} from "../../../store/modules/churchJobs/action";
 import {useDispatch, useSelector} from "react-redux";
 import {breadcrumbList, configTable} from "../utils";

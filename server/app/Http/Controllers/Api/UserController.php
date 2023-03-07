@@ -14,7 +14,8 @@ use App\Http\Resources\User\UserPrepareSave;
 use App\Http\Resources\User\UserResource;
 use App\Http\Resources\User\UserSaveSuccessResource;
 use App\Http\Resources\User\UserUpdateSuccessResource;
-use App\Models\ChurchJob;
+use App\Models\EcclesiasticalOffice;
+use App\Models\MinisterialPosition;
 use App\Models\MaritalStatus;
 use App\Models\Role;
 use App\Models\User;
@@ -127,19 +128,21 @@ class UserController extends CrudController
             $isAdmin = $this->userLoggedIsAdmin();
             $isSecretary = $this->userLoggedIsSecretary();
 
-            $includeRoleAdmin = $isAdmin && $role->is_admin;
-            $includeRoleSecretary = ($isSecretary || $isAdmin) && $role->is_secretary;
-            $outherRoles = !$role->is_admin && !$role->is_secretary;
+            $includeRoleAdmin = $isAdmin && $role->key = 'admin';
+            $includeRoleSecretary = ($isSecretary || $isAdmin) && $role->key == 'secretary';
+            $outherRoles = !$role->key == 'admin' && !$role->key == 'secretary';
 
             return $includeRoleAdmin || $includeRoleSecretary || $outherRoles;
 
         });
-        $churchJobs = ChurchJob::all();
+        $churchJobs = MinisterialPosition::all();
+        $ecclesiastialOffices = EcclesiasticalOffice::all();
 
         return [
             "marital_status" => MaritalStatusResource::collection($maritalStatus),
             "roles" => RoleResource::collection($roles),
-            "church_jobs" => ChurchJobResource::collection($churchJobs)
+            "ministerial_positions" => ChurchJobResource::collection($churchJobs),
+            "ecclesiastical_offices" => ChurchJobResource::collection($ecclesiastialOffices),
         ];
     }
 

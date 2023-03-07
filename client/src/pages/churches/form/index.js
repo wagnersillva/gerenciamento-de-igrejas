@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import LayoutContent from "../../../components/LayoutContainer/LayoutContent";
+import LayoutContent from "../../../components/Layout/Content";
 import {breadcrumbForm} from "../utils";
 import {getMessage} from "../../../i18n";
 import Content from "./Content";

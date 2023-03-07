@@ -29,7 +29,7 @@ export default function FormContainer({ children, form, onFinish, loading = fals
 
     function Buttons(){
         return (propsBtnSave.show || propsBtnCancel.show) && (
-            <Row  gutter={24} style={{ marginTop: "25px" }}>
+            <Row  gutter={24} justify={"end"} style={{ marginTop: "25px" }}>
                 <ButtonSave />
                 <ButtonCancel />
             </Row>

@@ -49,13 +49,21 @@ class Controller extends BaseController
         return $this->userLogged()->isSecretary();
     }
 
+    function userLoggedIsTreasure(){
+        return $this->userLogged()->isTreasure();
+    }
+
+    function userLoggedIsEducationalCoordinator(){
+        return $this->userLogged()->isEducationalCoordinator();
+    }
+
     /**
      * @throws UnauthorizedException
      */
     function canViewUser($id){
         $user = $this->userLogged();
 
-        if($id == $user->id || $this->userLoggedIsGeneralAdmin()) return true;
+        if($id == $user->id || $this->userLoggedIsAdmin()) return true;
 
         $this->checkPermission('read-user-details');
     }
@@ -66,7 +74,7 @@ class Controller extends BaseController
     function canEditUser($id){
         $user = $this->userLogged();
 
-        if($id == $user->id || $this->userLoggedIsGeneralAdmin()) return true;
+        if($id == $user->id || $this->userLoggedIsAdmin()) return true;
 
         $this->checkPermission('edit-user');
     }

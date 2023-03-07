@@ -1,8 +1,8 @@
 import React, {useEffect} from 'react';
 import {Form} from "antd";
-import InputGroup from "../../../components/FormContainer/InputGroups";
+import InputGroup from "../../../components/Form/InputGroups";
 import {useSelector} from "react-redux";
-import FormContainer from "../../../components/FormContainer";
+import FormContainer from "../../../components/Form";
 
 export default function Content({ save, id, getCepInfoRequest, getCityList }){
     const { church, toResetFields } = useSelector(store => store.churchReducer );

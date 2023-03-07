@@ -1,21 +1,19 @@
 import React, { useEffect } from 'react'
-import LayoutContent from "../../../components/LayoutContainer/LayoutContent";
+import LayoutContent from "../../../components/Layout/Content";
 import {breadcrumbForm} from "../utils";
 import {getMessage} from "../../../i18n";
 import Content from "./Content";
 import {useParams} from "react-router-dom";
 import {useDispatch} from "react-redux";
-import {prepareEditRequest, prepareSaveRequest, saveRequest, updateRequest} from "../../../store/modules/roles/action";
+import {prepareEditRequest, saveRequest, updateRequest} from "../../../store/modules/churchJobs/action";
 
-export default function RolesForm(){
+export default function ChurchJobsForm(){
     const dispatch = useDispatch();
     const { id } = useParams();
 
     useEffect(() => {
         if(id){
             dispatch(prepareEditRequest(id))
-        } else {
-            dispatch(prepareSaveRequest())
         }
     }, [id, dispatch])
 
@@ -29,7 +27,7 @@ export default function RolesForm(){
     }
 
     return (
-        <LayoutContent breadcrumb={breadcrumbForm} title={getMessage(`seguranca.perfil.${id ? "editar" : "cadastro"}.label`)}>
+        <LayoutContent breadcrumb={breadcrumbForm} title={getMessage(`secretaria.cargos.${id ? "editar" : "cadastro"}.label`)}>
             <Content save={saveData} id={id} />
         </LayoutContent>
     )

@@ -12,6 +12,8 @@ class PermissionSeeder extends Seeder
 
     private $defaultKeysPrefix = ['read', 'edit', 'create', 'delete'];
 
+    // user, read-user-details, ministerial-position, ecclesiastical-office, secretary, study, role, church, dashboard, dashboard-user, dashboard-finance, dashboard-study
+
     private $keys = array(
         array(
             "key" => "user",
@@ -19,10 +21,29 @@ class PermissionSeeder extends Seeder
                 "read-user-details"
             ]
         ),
-        array("key" => "church-job"),
+        array("key" => "ministerial-position"), // será modificado para ministerial-position - cargos ministeriais
+        array("key" => "ecclesiastical-office"), // cargos eclesiasticos
+        array("key" => "secretary"),
+        array("key" => "finance"),
+        array("key" => "study"),
         array("key" => "role"),
         array("key" => "church"),
+
+        array("key" => "dashboard"),
+        array("key" => "dashboard-user"),
+        array("key" => "dashboard-finance"),
+        array("key" => "dashboard-study"),
     );
+
+    private function updateNamePermission(String $currentKey, String $newKey): void
+    {
+        $permission = Permission::query()->where('key', $currentKey)->first();
+
+        if($permission){
+            $permission->update(['key' => $newKey]);
+        }
+
+    }
 
     private function createOrUpdate(String $keyLabel): void
     {
@@ -41,12 +62,22 @@ class PermissionSeeder extends Seeder
         }
     }
 
-    private function addPermissionInAdmin($permissions){
-        $role = Role::query()->where('is_admin', 1)->first();
+
+    private function addPermissionsInRole($roleKey, $permissionsForRole, $additionalPermissions = []){
+        $role = Role::query()->where('key', $roleKey)->first();
+        $completePermissionsForRole = [];
+
+        foreach ($this->defaultKeysPrefix as $keyPrefix){
+            foreach ($permissionsForRole as $permission){
+                $completePermissionsForRole[] = "$keyPrefix-$permission";
+            }
+        }
+
+        $completePermissionsForRole = array_merge_recursive_distinct($completePermissionsForRole, $additionalPermissions);
 
         if($role){
             $ids = [];
-            $listpermissions = Permission::query()->whereIn('key', $permissions)->get();
+            $listpermissions = Permission::query()->whereIn('key', $completePermissionsForRole)->get();
 
             foreach ($listpermissions as $permission){
                 $ids[] = $permission->id;
@@ -55,10 +86,38 @@ class PermissionSeeder extends Seeder
             $role->permissions()->sync($ids);
             $role->update();
         }
+
+    }
+
+    private function addPermissionInAdmin(){
+        $permissionsAdmin = ['user', 'ministerial-position', 'ecclesiastical-office', 'secretary', 'study', 'finance', 'role', 'church', 'dashboard', 'dashboard-user', 'dashboard-finance', 'dashboard-study'];
+        $this->addPermissionsInRole('admin', $permissionsAdmin, ['read-user-details']);
+    }
+
+    private function addPermissionInSecretary(){
+        $permissionsAdmin = ['user', 'ministerial-position', 'ecclesiastical-office', 'church', 'dashboard', 'dashboard-user'];
+        $this->addPermissionsInRole('secretary', $permissionsAdmin);
+    }
+
+    private function addPermissionInUser(){
+        $permissionsAdmin = ['user', 'dashboard', 'dashboard-user'];
+        $this->addPermissionsInRole('secretary', $permissionsAdmin, ['read-user-details']);
+    }
+
+    private function addPermissionInTreasure(){
+        $permissionsAdmin = ['finance', 'dashboard', 'dashboard-finance'];
+        $this->addPermissionsInRole('treasure', $permissionsAdmin);
+    }
+
+    private function addPermissionInEducationalCoordinator(){
+        $permissionsForRole = ['study', 'dashboard-study', 'dashboard'];
+        $this->addPermissionsInRole('educational-coordinator', $permissionsForRole);
     }
 
     public function run()
     {
+
+        $this->updateNamePermission('church-job', 'ministerial-position');
 
         $keys = [];
 
@@ -79,6 +138,12 @@ class PermissionSeeder extends Seeder
         }
 
         Permission::query()->whereNotIn('key', $keys)->delete();
-        $this->addPermissionInAdmin($keys);
+
+        $this->addPermissionInAdmin();
+        $this->addPermissionInSecretary();
+        $this->addPermissionInTreasure();
+        $this->addPermissionInEducationalCoordinator();
+        $this->addPermissionInUser();
+
     }
 }

@@ -101,11 +101,13 @@ class UserService
             $user->documents->map->delete();
             $user->address->map->delete();
             $user->roles()->sync([]);
+            $user->ecclesiasticalOffices()->sync([]);
         }
 
         $this->saveUserAddress($user, $attr);
         $this->saveUserDocuments($user, $attr);
         $this->updateUserRoles($user, $attr);
+        $this->updateEcclesiasticalOffices($user, $attr);
     }
 
     private function saveUserAddress(User $user, $attr): void
@@ -137,6 +139,15 @@ class UserService
 
         if($roles){
             $user->roles()->sync($roles);
+        }
+    }
+
+    public function updateEcclesiasticalOffices(User $user, $attr)
+    {
+        $roles = $attr['ecclesiastical_offices'] ?? null;
+
+        if($roles){
+            $user->ecclesiasticalOffices()->sync($roles);
         }
     }
 

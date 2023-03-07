@@ -41,7 +41,8 @@ export function userReducer(state = initialState, { type, payload }) {
                 ...state,
                 maritalStatus: payload?.data?.marital_status,
                 roles: payload?.data?.roles,
-                churchJobs: payload?.data?.church_jobs,
+                ministerialPositions: payload?.data?.ministerial_positions,
+                ecclesiasticalOffices: payload?.data?.ecclesiastical_offices,
                 loading: false,
             };
 
@@ -51,7 +52,8 @@ export function userReducer(state = initialState, { type, payload }) {
                 user: payload?.data?.user,
                 roles: payload?.data?.roles,
                 maritalStatus: payload?.data?.marital_status,
-                churchJobs: payload?.data?.church_jobs,
+                ministerialPositions: payload?.data?.ministerial_positions,
+                ecclesiasticalOffices: payload?.data?.ecclesiastical_offices,
                 loading: false,
             };
         case USER_SAVE_SUCCESS:

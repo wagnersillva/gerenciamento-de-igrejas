@@ -21,6 +21,9 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Http\Response;
 
+
+// CONTROLLER DESCONTINUADO POR TEMPO INDETERMINADO -> EM BREVE O CÓDIGO SERÁ REMOVITO
+
 class RoleController extends CrudController
 {
 

@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import {Button, Layout, Space} from 'antd';
 import MenuSidebar from "./MenuSidebar";
 import {TbBuildingChurch} from "react-icons/tb";
-import LayoutHeader from "./LayoutHeader";
+import LayoutHeader from "./Header";
 
 import "./style.css";
+import Logo from "../../images/church-logo-fish-only.png";
 
 export default function LayoutContainer({ children }) {
     const [collapsed, setCollapsed] = useState(false);
@@ -27,9 +28,10 @@ export default function LayoutContainer({ children }) {
             >
                 <div className={`logo-title ${ collapsed ? 'collapsed': ''}`} onClick={backHome}>
                     <div className={'logo'}>
-                        <TbBuildingChurch size={25} />
+                        <img src={Logo} alt={'logo'} style={{ width: 30 }} />
+                        {/*<TbBuildingChurch size={25} />*/}
                     </div>
-                    <Space style={{ fontSize: "14px", fontWeight: "400" }}>
+                    <Space style={{ fontSize: 14, fontWeight: 500 }}>
                         Churchly
                     </Space>
                 </div>

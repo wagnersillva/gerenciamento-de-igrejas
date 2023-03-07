@@ -16,7 +16,7 @@ use App\Http\Resources\Role\RoleResource;
 use App\Http\Resources\User\ChurchJobResource;
 use App\Http\Resources\User\MaritalStatusResource;
 use App\Models\Church;
-use App\Models\ChurchJob;
+use App\Models\MinisterialPosition;
 use App\Models\MaritalStatus;
 use App\Models\Role;
 use App\Models\User;

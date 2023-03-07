@@ -61,7 +61,7 @@ class User extends Authenticatable implements JWTSubject
 
     static function fields_ilike(): array
     {
-        return ['first_name', 'last_name', 'mother', 'father', 'email', 'username'];
+        return ['first_name', 'last_name', 'mother', 'father', 'email'];
     }
 
     static function fields_between(): array
@@ -72,7 +72,7 @@ class User extends Authenticatable implements JWTSubject
     static function fields_default(): array
     {
         return [
-            'church_job_id',
+            'ministerial_position_id',
             'marital_status_id',
             'birth'
         ];
@@ -94,14 +94,32 @@ class User extends Authenticatable implements JWTSubject
         return $this->hasMany(Address::class, 'user_id', 'id');
     }
 
-    public function churchJob()
+    public function ministerialPosition()
     {
-        return $this->belongsTo(ChurchJob::class, 'church_job_id', 'id');
+        return $this->belongsTo(MinisterialPosition::class, 'ministerial_position_id', 'id');
+    }
+
+    public function ecclesiasticalOffices()
+    {
+        return $this->belongsToMany(EcclesiasticalOffice::class, 'ecclesiastical_office_users', '', '');
     }
 
     public function church()
     {
         return $this->belongsTo(Church::class, 'church_id');
+    }
+
+    public function getChurches(){
+        $church = $this->church;
+        $churchList = [];
+
+        if(($church->matriz_id == null) && ($this->isAdmin())){
+            $churchList = $church->filiais->all();
+        }
+
+        array_unshift($churchList, $church);
+
+        return $churchList;
     }
 
     public function getPermissionsLabels()
@@ -118,14 +136,24 @@ class User extends Authenticatable implements JWTSubject
         return array_values(array_unique($permissions));
     }
 
+    public function isOnlyUser(){
+        return $this->roles->count() == 1 && $this->roles->filter(function($role){ return $role->key == 'user'; })->count() != 0;
+    }
+
     public function isAdmin(){
-        $superAdmin = $this->is_general_admin;
-        $hasRoleAdmin = $this->roles->filter(function($role){ return $role->is_admin; })->count() != 0;
-        return $superAdmin || $hasRoleAdmin;
+        return $this->roles->filter(function($role){ return $role->key == 'admin'; })->count() != 0;
     }
 
     public function isSecretary(){
-        return $this->roles->filter(function($role){ return $role->is_secretary; })->count() != 0;
+        return $this->roles->filter(function($role){ return $role->key == 'secretary'; })->count() != 0;
+    }
+
+    public function isTreasure(){
+        return $this->roles->filter(function($role){ return $role->key == 'treasure'; })->count() != 0;
+    }
+
+    public function isEducationalCoordinator(){
+        return $this->roles->filter(function($role){ return $role->key == 'educational-coordinator'; })->count() != 0;
     }
 
     public function getJWTIdentifier()

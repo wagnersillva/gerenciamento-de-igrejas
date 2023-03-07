@@ -1,11 +1,10 @@
 import React from 'react';
-import LayoutContainer from "../components/LayoutContainer";
-
+import GroupCardsInformation from "../components/Dashboard/GroupCards";
 
 export default function Home(){
     return (
         <>
-
+            <GroupCardsInformation />
         </>
     )
 }

@@ -1,16 +1,16 @@
 import React, {useEffect} from 'react';
-import LayoutContent from "../../../components/LayoutContainer/LayoutContent";
-import {listRoleRequest, destroyRequest} from "../../../store/modules/roles/action";
+import LayoutContent from "../../../components/Layout/Content";
+import {listChurchJobRequest, destroyRequest} from "../../../store/modules/churchJobs/action";
 import {useDispatch, useSelector} from "react-redux";
 import {breadcrumbList, configTable} from "../utils";
 import {getMessage} from "../../../i18n";
 import {useNavigate} from "react-router-dom";
 import CustomTable from "../../../components/Table";
 
-export default function Roles(){
+export default function ChurchJobs(){
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const { data, total } = useSelector(store => store.roleReducer );
+    const { data, total } = useSelector(store => store.churchJobReducer );
     const { i18n, columns } = configTable;
 
     useEffect(() => {
@@ -18,7 +18,7 @@ export default function Roles(){
     }, [])
 
     function getList(params = {}){
-        dispatch(listRoleRequest(params))
+        dispatch(listChurchJobRequest(params))
     }
 
     const actions = {
@@ -30,14 +30,12 @@ export default function Roles(){
         getList({ page })
     }
 
-     console.log({ data })
-
     return (
         <LayoutContent
             breadcrumb={breadcrumbList}
-            newRegister={"/seguranca/perfil/form"}
-            module={"role"}
-            title={getMessage("seguranca.perfil.listagem.label")}
+            newRegister={"/secretaria/cargos/form"}
+            module={"church-job"}
+            title={getMessage("secretaria.cargos.listagem.label")}
         >
             <CustomTable
                 i18n={i18n}

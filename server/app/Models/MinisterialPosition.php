@@ -8,11 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * @method static create()
  */
-class ChurchJob extends Model
+class MinisterialPosition extends Model
 {
     use HasFactory;
 
-    protected $table = "church_jobs";
+    protected $table = "ministerial_position";
 
     protected $fillable = [
         'title',

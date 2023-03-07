@@ -1,6 +1,6 @@
 import React from 'react'
 import {Button, PageHeader, Space, Typography} from "antd";
-import LayoutBreadcrumb from "../LayoutBreadcrumb";
+import LayoutBreadcrumb from "../Breadcrumb";
 import {getMessage} from "../../../i18n";
 import "./style.css";
 import {useNavigate} from "react-router-dom";

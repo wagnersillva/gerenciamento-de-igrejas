@@ -10,7 +10,6 @@ import { churchReducer } from "./churches/reducer";
 export default combineReducers({
     userReducer,
     authReducer,
-    roleReducer,
     globalReducer,
     churchJobReducer,
     utilsReducer,

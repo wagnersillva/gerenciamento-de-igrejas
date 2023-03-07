@@ -3,7 +3,7 @@ import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {loginRequest} from "../../../store/modules/auth/action";
 import {getMessage} from "../../../i18n";
-import Logo from "../../../images/church-logo.png";
+import Logo from "../../../images/church-logo-full.png";
 import "../style.css"
 
 export default function Login(){
@@ -32,8 +32,7 @@ export default function Login(){
             <Col span={12} className={"login-wrapper-container"} style={{ maxWidth: "400px" }}>
                 <Row style={{ marginBottom: "50px" }} justify={"center"}>
                     <Space direction={"vertical"} align={"center"}>
-                        <img src={Logo} alt={'logo'} style={{ marginBottom: 25}} />
-                        <Typography.Title level={5}>Church Management System</Typography.Title>
+                        <img src={Logo} alt={'logo'} style={{ width: 200 }} />
                     </Space>
                 </Row>
                 <Form
@@ -45,12 +44,12 @@ export default function Login(){
                     <Row gutter={24} justify={"center"} style={{ marginBottom: 15}}>
                         <Col span={24}>
                             <Form.Item
-                                name="username"
+                                name="email"
                                 rules={[
-                                    { required: true, message: 'Por favor, informe o username!',},
+                                    { type: "email", required: true, message: 'Por favor, informe o username!'},
                                 ]}
                             >
-                                <Input placeholder={"Usuário"} size={"large"} />
+                                <Input placeholder={"Email"} size={"large"} />
                             </Form.Item>
                         </Col>
                     </Row>

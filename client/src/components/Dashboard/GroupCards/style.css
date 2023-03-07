@@ -1,0 +1,38 @@
+.group-card-information {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.card-information {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    width: 380px;
+    height: 115px;
+    padding: 10px;
+    background: #353888;
+    color: #fff;
+    border-radius: 4px;
+}
+
+.card-information-icon {
+    font-size: 60px;
+}
+
+.card-information-content {
+    margin-left: 5px;
+    font-weight: 500;
+}
+
+.card-information-content .card-information-content-title {
+    font-size: 20px;
+}
+
+.card-information-content .card-information-content-value {
+    font-size: 16px;
+}
+

@@ -8,5 +8,12 @@
       <jdbc-url>jdbc:mysql://localhost:3306/sis_igreja</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="church_management_system@104.248.193.168" uuid="0d7fb2f5-c87d-40f8-b5a5-f67ee3e25b91">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://104.248.193.168:3306/church_management_system</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>

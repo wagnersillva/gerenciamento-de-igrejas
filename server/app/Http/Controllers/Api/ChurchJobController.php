@@ -9,7 +9,7 @@ use App\Http\Resources\ChurchJob\ChurchJobResourcePrepareEdit;
 use App\Http\Resources\ChurchJob\ChurchJobSaveSuccessResource;
 use App\Http\Resources\ChurchJob\ChurchJobUpdateSuccessResource;
 use App\Http\Resources\User\ChurchJobResource;
-use App\Models\ChurchJob;
+use App\Models\MinisterialPosition;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
@@ -18,7 +18,7 @@ class ChurchJobController extends CrudController
 
     public function __construct()
     {
-        parent::__construct('App\Models\ChurchJob');
+        parent::__construct('App\Models\MinisterialPosition');
     }
 
     /**
@@ -28,7 +28,7 @@ class ChurchJobController extends CrudController
      */
     public function index(Request $request)
     {
-        $this->checkPermission('read-church-job');
+        $this->checkPermission('read-ministerial-position');
 
         $params = $request->all();
         $page = $params['page'] ?? 1;
@@ -54,10 +54,10 @@ class ChurchJobController extends CrudController
      */
     public function store(ChurchJobStoreRequest $request)
     {
-        $this->checkPermission('create-church-job');
+        $this->checkPermission('create-ministerial-position');
 
         $request->validated();
-        $churchJob = ChurchJob::create($request->all());
+        $churchJob = MinisterialPosition::create($request->all());
         return new ChurchJobSaveSuccessResource($churchJob);
     }
 
@@ -69,7 +69,7 @@ class ChurchJobController extends CrudController
      */
     public function show(int $id): ChurchJobResource
     {
-        $user = ChurchJob::find($id);
+        $user = MinisterialPosition::find($id);
 
         if(!$user){
             abort(404, "Church job Not Found for id [$id]");
@@ -97,9 +97,9 @@ class ChurchJobController extends CrudController
      */
     public function update(Request $request, $id)
     {
-        $this->checkPermission('edit-church-job');
+        $this->checkPermission('edit-ministerial-position');
 
-        $church = ChurchJob::find($id);
+        $church = MinisterialPosition::find($id);
 
         if(!$church){
             abort(404, "Church job Not Found for id [$id]");
@@ -120,9 +120,9 @@ class ChurchJobController extends CrudController
     public function destroy($id)
     {
 
-        $this->checkPermission('delete-church-job');
+        $this->checkPermission('delete-ministerial-position');
 
-        $church = ChurchJob::find($id);
+        $church = MinisterialPosition::find($id);
 
         if(!$church){
             abort(404, "Cargo não encontrado com o id [$id]");
@@ -137,9 +137,9 @@ class ChurchJobController extends CrudController
 
     public function prepareEdit($id)
     {
-        $this->checkPermission('edit-church-job');
+        $this->checkPermission('edit-ministerial-position');
 
-        $church = ChurchJob::find($id);
+        $church = MinisterialPosition::find($id);
 
         if(!$church){
             throw new RegisterNotFoundException("Cargo não encontrado com o id [$id]");

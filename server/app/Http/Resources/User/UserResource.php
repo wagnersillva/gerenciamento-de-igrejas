@@ -21,9 +21,9 @@ class UserResource extends DefaultResource
         $model["disabledDelete"] = $this->disabledDelete();
         $model["disabledUpdate"] = $this->disabledUpdate();
         $model["password_changed"] = $this->password_changed == 1;
-        $model["is_general_admin"] = $this->is_general_admin == 1;
         $model['documents'] = DocumentResource::collection($this->documents);
-        $model['church_job'] = new ChurchJobResource($this->churchJob);
+        $model['ministerial_position_id'] = new ChurchJobResource($this->ministerialPosition);
+        $model['ecclesiastical_offices'] = ChurchJobResource::collection($this->ecclesiasticalOffices);
         $model['roles'] = RoleResource::collection($this->roles);
         $model['church'] = new ChurchResourceTemplate($this->church);
 

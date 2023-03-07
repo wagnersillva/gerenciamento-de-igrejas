@@ -61,7 +61,7 @@ class AuthController extends Controller
         try {
             $validateUser = Validator::make($request->all(),
                 [
-                    'username' => 'required',
+                    'email' => 'required',
                     'password' => 'required'
                 ]);
 
@@ -73,10 +73,10 @@ class AuthController extends Controller
                 ], 401);
             }
 
-            $credentials = request(['username', 'password']);
+            $credentials = request(['email', 'password']);
 
             if (! $token = auth()->attempt($credentials)) {
-                return response()->json(['error' => ["message" => 'usuário ou senha inválidos.']], 401);
+                return response()->json(['error' => ["message" => 'email ou senha inválidos.']], 401);
             }
 
             return $this->respondWithToken($token);
@@ -98,7 +98,7 @@ class AuthController extends Controller
 
         if($valid){
             $user = User::find(auth()->user()->id);
-            $churches = $this->getChurches($user);
+            $churches = $user->getChurches();
             $model['permissions'] = $user->getPermissionsLabels();
             $model['id'] = $user->id;
             $model['is_admin'] = $user->isAdmin();
@@ -122,7 +122,7 @@ class AuthController extends Controller
     protected function respondWithToken($token): \Illuminate\Http\JsonResponse
     {
         $user = User::find(auth()->user()->id);
-        $churches = $this->getChurches($user);
+        $churches = $user->getChurches();
 
 //        TODO retornar permissões no little detail
         $model = [
@@ -179,7 +179,7 @@ class AuthController extends Controller
 
     public function changeChurch(Request $request){
         $user = User::find(auth()->user()->id);
-        $churches = $this->getChurches($user);
+        $churches = $user->getChurches();
         $attr = $request->all();
         $church_id = $attr['churchId'];
         $canToChange = false;

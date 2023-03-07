@@ -69,3 +69,27 @@ alter table churches modify address_id bigint unsigned null;
 alter table address modify user_id bigint unsigned; -- mudar associação entre endereco e usuario
 
 alter table users add church_logged bigint unsigned;
+
+rename table church_jobs to ministerial_position;
+
+create table ecclesiastical_office (
+    id bigint unsigned auto_increment primary key,
+    title       varchar(255) not null,
+    description varchar(255) not null,
+    created_at  timestamp    null,
+    updated_at  timestamp    null
+);
+
+create table ecclesiastical_office_users (
+    user_id bigint unsigned not null,
+    ecclesiastical_office_id bigint unsigned not null,
+    primary key (user_id, ecclesiastical_office_id),
+    constraint ecc_office_ecc_id_foreign
+     foreign key (ecclesiastical_office_id) references ecclesiastical_office (id)
+         on delete cascade,
+    constraint ecc_office_user_id_foreign
+     foreign key (user_id) references users (id)
+         on delete cascade
+);
+
+alter table users drop column username;
